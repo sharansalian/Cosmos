@@ -2,6 +2,7 @@ package com.example.cosmos.di
 
 import android.content.Context
 import com.example.cosmos.data.AppDatabase
+import com.example.cosmos.data.PhotoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,5 +18,10 @@ class DatabaseModule {
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return AppDatabase.getInstance(context)
+    }
+
+    @Provides
+    fun providePhotoDao(appDatabase: AppDatabase): PhotoDao {
+        return appDatabase.photoDao()
     }
 }
