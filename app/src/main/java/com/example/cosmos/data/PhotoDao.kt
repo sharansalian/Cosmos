@@ -1,6 +1,5 @@
 package com.example.cosmos.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,4 +14,7 @@ interface PhotoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(photos: List<Photo>)
+
+    @Query("SELECT * FROM photos WHERE id = :id")
+    fun getPhoto(id: Int): Flow<Photo>
 }

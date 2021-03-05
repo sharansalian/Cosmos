@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="Base.Theme.Cosmos" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorOnSurface">@android:color/black</item>
+        <item name="android:colorBackground">@color/accent</item>
+    </style>
+
+    <style name="Theme.Cosmos" parent="Base.Theme.Cosmos"/>
+
+    <style name="Theme.Cosmos.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Cosmos.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+    <style name="TextAppearance.Cosmos.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+</resources>
