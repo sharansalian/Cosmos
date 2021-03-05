@@ -12,7 +12,7 @@ import com.example.cosmos.data.Photo
 import com.example.cosmos.databinding.ListItemPhotoBinding
 
 
-class GalleryAdapter : ListAdapter<Photo, RecyclerView.ViewHolder>(PhotoDiffCallback()) {
+class PhotoAdapter : ListAdapter<Photo, RecyclerView.ViewHolder>(PhotoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PhotoViewHolder(
