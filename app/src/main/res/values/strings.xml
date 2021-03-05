@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cosmos</string>
+    <string name="article_cover_content_description">Article Cover</string>
 </resources>
