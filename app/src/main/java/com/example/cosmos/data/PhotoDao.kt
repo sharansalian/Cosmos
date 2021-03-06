@@ -17,4 +17,10 @@ interface PhotoDao {
 
     @Query("SELECT * FROM photos WHERE id = :id")
     fun getPhoto(id: Int): Flow<Photo>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPhoto(photo: Photo)
+
+    @Query("DELETE FROM photos")
+    suspend fun clearPhotos()
 }

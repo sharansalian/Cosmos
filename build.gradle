@@ -8,6 +8,7 @@ buildscript {
 
         coroutinesVersion = "1.4.2"
         coreTestingVersion = '2.0.0'
+        espressoVersion = '3.1.1'
         glideVersion = '4.10.0'
         gsonVersion = '2.8.2'
         hiltVersion = '2.31.2-alpha'
