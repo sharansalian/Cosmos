@@ -9,4 +9,6 @@ interface PhotosDataSource {
 
     fun observePhotos(): LiveData<List<Photo>>
 
+    suspend fun getPhotos(): List<Photo>
+
 }

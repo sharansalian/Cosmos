@@ -11,4 +11,8 @@ class PhotosLocalDataSource(
     override fun observePhotos(): LiveData<List<Photo>> {
         return photosDao.observePhotos()
     }
+
+    override suspend fun getPhotos(): List<Photo> {
+        return photosDao.getPhotos()
+    }
 }
