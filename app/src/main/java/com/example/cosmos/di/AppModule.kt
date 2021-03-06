@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.cosmos.data.AppDatabase
 import com.example.cosmos.data.PhotoRepository
 import com.example.cosmos.data.local.PhotosDao
+import com.example.cosmos.data.local.PhotosLocalDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,6 +26,16 @@ class AppModule {
     fun providePhotoDao(appDatabase: AppDatabase): PhotosDao {
         return appDatabase.photoDao()
     }
+
+    @Singleton
+    @Provides
+    fun providePhotosLocalDataSource(
+        database: AppDatabase
+    ): PhotosLocalDataSource {
+        return PhotosLocalDataSource(
+            database.photoDao()
+        )
+    }
 }
 
 
@@ -35,10 +46,11 @@ object PhotoRepositoryModule {
     @Singleton
     @Provides
     fun providePhotosRepository(
+        photosLocalDataSource: PhotosLocalDataSource,
         photosDao: PhotosDao
     ): PhotoRepository {
         return PhotoRepository(
-            photosDao
+            photosDao, photosLocalDataSource
         )
     }
 }

@@ -6,9 +6,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PhotoRepository @Inject constructor(private val photosDao: PhotosDao) {
+class PhotoRepository @Inject constructor(
+    private val photosDao: PhotosDao,
+    private val photosLocalDataSource: PhotosDataSource
+) {
 
-    fun getPhotos() = photosDao.observePhotos()
+    fun getPhotos() = photosLocalDataSource.observePhotos()
 
     fun getPhoto(id: Int) = photosDao.getPhoto(id)
 
