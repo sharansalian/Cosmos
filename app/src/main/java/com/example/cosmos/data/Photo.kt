@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "photos")
 data class Photo(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val copyright: String? = "",
     val date: String,
     val explanation: String,
     val hdurl: String,
     val title: String,
-    val url: String
+    val url: String,
+    val copyright: String? = ""
 )
