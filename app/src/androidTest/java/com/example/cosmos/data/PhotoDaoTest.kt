@@ -47,4 +47,8 @@ class PhotoDaoTest {
         assertThat(photos[2], equalTo(photoC))
     }
 
+    @Test fun testGetPhoto() = runBlocking {
+        assertThat(photoDao.getPhoto(photoA.id).first(), equalTo(photoA))
+    }
+
 }
