@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.example.cosmos.data.local.PhotosDao
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.equalTo
@@ -15,9 +16,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class PhotoDaoTest {
+class PhotosDaoTest {
     private lateinit var database: AppDatabase
-    private lateinit var photoDao: PhotoDao
+    private lateinit var photosDao: PhotosDao
     private val photoA = Photo(1, "A", "", "", "", "", "")
     private val photoB = Photo(2, "B", "", "", "", "", "")
     private val photoC = Photo(3, "C", "", "", "", "", "")
@@ -28,9 +29,9 @@ class PhotoDaoTest {
     @Before fun createDb() = runBlocking {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
-        photoDao = database.photoDao()
+        photosDao = database.photoDao()
 
-        photoDao.insertAll(listOf(photoB, photoC, photoA))
+        photosDao.insertAll(listOf(photoB, photoC, photoA))
 
     }
 
@@ -39,7 +40,7 @@ class PhotoDaoTest {
     }
 
     @Test fun testGetPhotos() = runBlocking {
-        val photos = photoDao.getPhotos()
+        val photos = photosDao.getPhotos()
         assertThat(photos.size, equalTo(3))
 
         assertThat(photos[0], equalTo(photoA))
@@ -48,7 +49,7 @@ class PhotoDaoTest {
     }
 
     @Test fun testGetPhoto() = runBlocking {
-        assertThat(photoDao.getPhoto(photoA.id).first(), equalTo(photoA))
+        assertThat(photosDao.getPhoto(photoA.id).first(), equalTo(photoA))
     }
 
 }

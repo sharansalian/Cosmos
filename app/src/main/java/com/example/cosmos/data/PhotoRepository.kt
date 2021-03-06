@@ -1,21 +1,22 @@
 package com.example.cosmos.data
 
+import com.example.cosmos.data.local.PhotosDao
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PhotoRepository @Inject constructor(private val photoDao: PhotoDao) {
+class PhotoRepository @Inject constructor(private val photosDao: PhotosDao) {
 
-    fun getPhotos() = photoDao.observePhotos()
+    fun getPhotos() = photosDao.observePhotos()
 
-    fun getPhoto(id: Int) = photoDao.getPhoto(id)
+    fun getPhoto(id: Int) = photosDao.getPhoto(id)
 
     fun insertPhoto(photo: Photo) = runBlocking {
-        photoDao.insertPhoto(photo)
+        photosDao.insertPhoto(photo)
     }
 
     fun clearPhotos() = runBlocking {
-        photoDao.clearPhotos()
+        photosDao.clearPhotos()
     }
 }

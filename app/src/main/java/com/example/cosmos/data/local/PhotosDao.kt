@@ -1,14 +1,15 @@
-package com.example.cosmos.data
+package com.example.cosmos.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.cosmos.data.Photo
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface PhotoDao {
+interface PhotosDao {
 
     @Query("SELECT * FROM photos ORDER BY id")
     fun observePhotos(): LiveData<List<Photo>>
