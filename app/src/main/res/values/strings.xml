@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Cosmos</string>
     <string name="article_cover_content_description">Article Cover</string>
+    <string name="cosmos_empty">Your universe is empty</string>
 </resources>

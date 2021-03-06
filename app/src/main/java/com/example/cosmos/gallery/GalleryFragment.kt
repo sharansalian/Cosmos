@@ -30,15 +30,16 @@ class GalleryFragment : Fragment() {
         context ?: return binding.root
 
         binding.photoList.adapter = adapter
-        subscribeUi()
+        subscribeUi(binding)
 
         return binding.root
     }
 
-    private fun subscribeUi() {
+    private fun subscribeUi(binding: FragmentGalleryBinding) {
         lifecycleScope.launch {
-            viewModel.photos.observe(viewLifecycleOwner) {
-                adapter.submitList(it)
+            viewModel.photos.observe(viewLifecycleOwner) { photos ->
+                binding.hasPhotos = !photos.isNullOrEmpty()
+                adapter.submitList(photos)
             }
         }
     }
