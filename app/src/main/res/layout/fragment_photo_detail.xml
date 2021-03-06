@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.cosmos.viewmodels.PhotoDetailViewModel" />
+            type="com.example.cosmos.photodetail.PhotoDetailViewModel" />
 
     </data>
 
