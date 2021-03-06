@@ -1,4 +1,4 @@
-package com.example.cosmos
+package com.example.cosmos.photodetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.cosmos.R
 import com.example.cosmos.databinding.FragmentPhotoDetailBinding
-import com.example.cosmos.viewmodels.PhotoDetailViewModel
-import com.example.cosmos.viewmodels.PhotoDetailViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

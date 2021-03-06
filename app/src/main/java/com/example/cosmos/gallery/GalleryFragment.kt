@@ -1,4 +1,4 @@
-package com.example.cosmos
+package com.example.cosmos.gallery
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import com.example.cosmos.adapters.PhotoAdapter
 import com.example.cosmos.databinding.FragmentGalleryBinding
-import com.example.cosmos.viewmodels.PhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -19,7 +18,7 @@ import kotlinx.coroutines.launch
 class GalleryFragment : Fragment() {
 
     private val adapter = PhotoAdapter()
-    private val viewModel: PhotosViewModel by viewModels()
+    private val viewModel: GalleryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

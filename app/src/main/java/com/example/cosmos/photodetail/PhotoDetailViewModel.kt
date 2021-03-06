@@ -1,4 +1,4 @@
-package com.example.cosmos.viewmodels
+package com.example.cosmos.photodetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

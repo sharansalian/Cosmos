@@ -1,4 +1,4 @@
-package com.example.cosmos.viewmodels
+package com.example.cosmos.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class PhotosViewModel @Inject internal constructor(photoRepository: PhotoRepository) : ViewModel() {
+class GalleryViewModel @Inject internal constructor(photoRepository: PhotoRepository) : ViewModel() {
 
     val photos: LiveData<List<Photo>> = photoRepository.getPhotos().asLiveData()
 
