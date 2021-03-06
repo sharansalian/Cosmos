@@ -39,7 +39,7 @@ class PhotoDaoTest {
     }
 
     @Test fun testGetPhotos() = runBlocking {
-        val photos = photoDao.getPhotos().first()
+        val photos = photoDao.getPhotos()
         assertThat(photos.size, equalTo(3))
 
         assertThat(photos[0], equalTo(photoA))
