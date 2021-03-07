@@ -11,4 +11,13 @@ interface PhotosDataSource {
 
     suspend fun getPhotos(): List<Photo>
 
+    suspend fun getPhoto(photoId: String): Photo
+
+    fun observePhoto(photoId: String): LiveData<Photo>
+
+    suspend fun insertPhoto(photo: Photo)
+
+    suspend fun clearPhotos()
+
+
 }
