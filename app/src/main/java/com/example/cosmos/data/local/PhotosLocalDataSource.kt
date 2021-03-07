@@ -15,4 +15,20 @@ class PhotosLocalDataSource(
     override suspend fun getPhotos(): List<Photo> {
         return photosDao.getPhotos()
     }
+
+    override suspend fun getPhoto(photoId: String): Photo {
+        return photosDao.getPhoto(photoId)
+    }
+
+    override fun observePhoto(photoId: String): LiveData<Photo> {
+        return photosDao.observePhoto(photoId)
+    }
+
+    override suspend fun insertPhoto(photo: Photo) {
+       return photosDao.insertPhoto(photo)
+    }
+
+    override suspend fun clearPhotos() {
+        return photosDao.clearPhotos()
+    }
 }
