@@ -8,11 +8,12 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.MediumTest
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.cosmos.CosmosActivity
 import com.example.cosmos.R
 import com.example.cosmos.data.AppDatabase
-import com.example.cosmos.data.PhotoRepository
+import com.example.cosmos.data.DefaultPhotosRepository
 import com.example.cosmos.utilities.testPhoto
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -23,6 +24,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Inject
 
+@MediumTest
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class GalleryFragmentTest {
@@ -30,8 +32,7 @@ class GalleryFragmentTest {
     private lateinit var appDatabase: AppDatabase
 
     @Inject
-    lateinit var photoRepository: PhotoRepository
-
+    lateinit var photoRepository: DefaultPhotosRepository
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -82,6 +83,7 @@ class GalleryFragmentTest {
             // Disable animations in RecyclerView
             (activity.findViewById(R.id.photo_list) as RecyclerView).itemAnimator = null
         }
+
         return activityScenario
     }
 }

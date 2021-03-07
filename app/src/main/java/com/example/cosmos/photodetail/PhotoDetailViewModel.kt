@@ -1,19 +1,22 @@
 package com.example.cosmos.photodetail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import com.example.cosmos.data.PhotoRepository
+import com.example.cosmos.data.Photo
+import com.example.cosmos.data.PhotosRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 
 class PhotoDetailViewModel @AssistedInject constructor(
-    photoRepository: PhotoRepository,
-    @Assisted private val id: String
+    photoRepository: PhotosRepository,
+    @Assisted private val photoId: String
 ) : ViewModel() {
 
-    val photo = photoRepository.getPhoto(id.toInt()).asLiveData()
+    private val _photo = photoRepository.observePhoto(photoId)
+
+    val photo: LiveData<Photo> = _photo
 
     companion object {
         fun provideFactory(
