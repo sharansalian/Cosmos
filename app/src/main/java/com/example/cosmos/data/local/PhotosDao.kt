@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.cosmos.data.Photo
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PhotosDao {
@@ -21,7 +20,10 @@ interface PhotosDao {
     suspend fun insertAll(photos: List<Photo>)
 
     @Query("SELECT * FROM photos WHERE id = :id")
-    fun getPhoto(id: Int): Flow<Photo>
+    fun getPhoto(id: String): Photo
+
+    @Query("SELECT * FROM photos WHERE id = :id")
+    fun observePhoto(id: String): LiveData<Photo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhoto(photo: Photo)
