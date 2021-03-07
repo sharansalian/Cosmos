@@ -5,7 +5,6 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.cosmos.data.local.PhotosDao
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.equalTo
 import org.junit.After
@@ -27,6 +26,7 @@ class PhotosDaoTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before fun createDb() = runBlocking {
+
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         photosDao = database.photoDao()
@@ -49,7 +49,7 @@ class PhotosDaoTest {
     }
 
     @Test fun testGetPhoto() = runBlocking {
-        assertThat(photosDao.getPhoto(photoA.id).first(), equalTo(photoA))
+        assertThat(photosDao.getPhoto(photoA.id.toString()), equalTo(photoA))
     }
 
 }
